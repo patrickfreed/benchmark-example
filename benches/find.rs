@@ -22,9 +22,14 @@ pub fn find_bench(c: &mut Criterion) {
 
         let collection = client.database("foo").collection("bar");
         collection.drop(None).await.unwrap();
-        for i in 0..10_000 {
-            collection.insert_one(doc! { "x": i }, None).await.unwrap();
-        }
+
+        let doc = doc! {
+            "hello": "world",
+            "anotherKey": "anotherValue",
+            "number": 1234
+        };
+        let docs = vec![&doc; 10_000];
+        collection.insert_many(docs, None).await.unwrap();
         collection
     });
     // end setup

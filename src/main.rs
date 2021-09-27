@@ -10,9 +10,13 @@ use mongodb::{
 /// work to do. To reduce noise, don't run this while generating flamegraphs.
 #[allow(dead_code)]
 async fn seed_data(coll: &Collection<Document>) -> mongodb::error::Result<()> {
-    for _ in 0..10_000 {
-        coll.insert_one(doc! { "x": 1 }, None).await?;
-    }
+    let doc = doc! {
+        "hello": "world",
+        "anotherKey": "anotherValue",
+        "number": 1234
+    };
+    let docs = vec![&doc; 10_000];
+    coll.insert_many(docs, None).await.unwrap();
 
     Ok(())
 }
