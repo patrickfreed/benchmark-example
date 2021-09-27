@@ -16,6 +16,8 @@ cd .. && git clone https://github.com/mongodb/mongo-rust-driver
 mongod --dbpath <some folder> --logpath <some log file> --fork
 ```
 
+Note: the folder used for the `--dbpath` argument needs to be created before starting the `mongod` instance.
+
 ## Running the benchmark
 
 `cargo bench` will run the `find` benchmark. `target/criterion/report` will contain the HTML report.
@@ -24,6 +26,6 @@ The code for the benchmark is found in `benches/find.rs`.
 
 ## Generating a flamegraph
 
-`cargo flamegraph -o <filename.svg> --bin benchmark-example` will generate a low-noise flamegraph. Be sure to seed the database with data before generating the flamegraph (see the `see_data` function).
+`cargo flamegraph -o <filename.svg> --bin benchmark-example` will generate a low-noise flamegraph. Be sure to seed the database with data before generating the flamegraph (see the `seed_data` function).
 
 The code for the application to use for flamegraphs can be found in `src/main.rs`.
