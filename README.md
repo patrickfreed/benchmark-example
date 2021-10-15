@@ -1,6 +1,6 @@
 # Rust Benchmarking Example Code
 
-This repository contains the sample code included in the [Making Slow Rust Code Fast]() blog post.
+This repository contains the sample code included in the [Making Slow Rust Code Fast](https://patrickfreed.github.io/rust/2021/10/15/making-slow-rust-code-fast.html) blog post.
 
 ## Setup
 
